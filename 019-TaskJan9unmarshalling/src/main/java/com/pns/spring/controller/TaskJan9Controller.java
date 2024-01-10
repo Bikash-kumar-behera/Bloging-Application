@@ -15,6 +15,7 @@ import jakarta.validation.Valid;
 public class TaskJan9Controller {
 	@PostMapping(consumes = MediaType.APPLICATION_XML_VALUE,produces = MediaType.APPLICATION_XML_VALUE, path = "post")
 	public Upi unmarshalling(@Valid @RequestBody Upi upi) {
+		System.out.println(upi);
 		return upi;
 	}
 }

@@ -6,9 +6,11 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
-@XmlRootElement(namespace = "http://npci.org/upi/schema/", name = "ReqValAdd")
+@ToString
+@XmlRootElement(name = "ReqValAdd", namespace = "http://npci.org/upi/schema/")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Upi {
 
