@@ -1,6 +1,6 @@
 @jakarta.xml.bind.annotation.XmlSchema(
         namespace = "http://npci.org/upi/schema/",
-        elementFormDefault = jakarta.xml.bind.annotation.XmlNsForm.UNSET,//can be adjusted to accept data only with name-space prefix
+        elementFormDefault = jakarta.xml.bind.annotation.XmlNsForm.UNQUALIFIED,//can be adjusted to accept data only with name-space prefix
         xmlns = {
             @jakarta.xml.bind.annotation.XmlNs(prefix = "upi", namespaceURI = "http://npci.org/upi/schema/")
         })

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pns.spring.model.Upi;
+import com.pns.spring.model.ReqValAdd;
 
 import jakarta.validation.Valid;
 
@@ -14,8 +14,7 @@ import jakarta.validation.Valid;
 @Validated
 public class TaskJan9Controller {
 	@PostMapping(consumes = MediaType.APPLICATION_XML_VALUE,produces = MediaType.APPLICATION_XML_VALUE, path = "post")
-	public Upi unmarshalling(@Valid @RequestBody Upi upi) {
-		System.out.println(upi);
-		return upi;
+	public ReqValAdd unmarshalling(@Valid @RequestBody ReqValAdd reqValAdd) {
+		return reqValAdd;
 	}
 }

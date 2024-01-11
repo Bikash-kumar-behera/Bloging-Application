@@ -12,7 +12,7 @@ import lombok.ToString;
 @ToString
 @XmlRootElement(name = "ReqValAdd", namespace = "http://npci.org/upi/schema/")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Upi {
+public class ReqValAdd {
 
     @XmlElement(name = "Head")
     private Head head;
