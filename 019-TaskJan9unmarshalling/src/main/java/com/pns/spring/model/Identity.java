@@ -24,7 +24,8 @@ public class Identity {
 
         @XmlEnumValue("AADHAAR") AADHAAR,
         
-        @XmlEnumValue("ACCOUNT") ACCOUNT
+        @XmlEnumValue("ACCOUNT") ACCOUNT;
+        
     }
 
 	@XmlAttribute(name = "verifiedName")
