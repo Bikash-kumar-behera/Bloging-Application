@@ -17,4 +17,9 @@ public class Employee {
 	private String email;
 	private String gender;
 	private String profession;
+	
+	@Override
+	public String toString() {
+		return String.format("%d,%s,%s,%s,%s,%s", id,firstName,lastName,email,gender,profession);
+	}
 }

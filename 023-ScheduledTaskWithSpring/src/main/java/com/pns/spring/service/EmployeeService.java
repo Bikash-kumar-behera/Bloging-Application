@@ -1,5 +1,9 @@
 package com.pns.spring.service;
 
+import java.util.List;
+
+import com.pns.spring.entity.Employee;
+
 public interface EmployeeService {
-	void fetchDataFromDatabaseAndWriteToCsv();
+	List<Employee> fetchAllEmployeeDataFromDatabase();
 }

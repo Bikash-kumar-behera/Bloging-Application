@@ -14,7 +14,7 @@ import lombok.ToString;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ReqValAdd {
 
-    @XmlElement(name = "Head")
+    @XmlElement(name = "Head",nillable = true )
     private Head head;
 
     @XmlElement(name = "Txn")
