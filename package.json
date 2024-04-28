@@ -20,6 +20,7 @@
     "ioredis": "^5.4.1",
     "jose": "^5.2.4",
     "lucide-react": "^0.376.0",
+    "markdown-to-jsx": "^7.4.7",
     "mongoose": "^8.3.2",
     "next": "14.2.3",
     "next-themes": "^0.3.0",
@@ -27,6 +28,8 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
+    "react-slick": "^0.30.2",
+    "slick-carousel": "^1.8.1",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7"
   },
