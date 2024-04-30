@@ -3,6 +3,7 @@ import User from "@/models/userModel";
 import { NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
 import { sendEmail } from "@/helpers/mailer";
+import axios from "axios";
 
 connect();
 
@@ -30,7 +31,13 @@ export async function POST(request) {
         });
         //Save the new user to the database
         const savedUser = await newUser.save();
-
+        const backendUrl = process.env.BACKEND_URL+"/user/"
+        const backendUser = {
+            "userId": savedUser._id,
+            "email": savedUser.email,
+            "name": savedUser.username,
+        }
+        const res = axios.post(backendUrl, backendUser)
         //send verification email
 
         await sendEmail({ email, emailType: "VERIFY", userId: savedUser._id });

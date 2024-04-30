@@ -1,26 +1,27 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { comments, posts } from "@/utils/dummyData";
+// import { comments, posts } from "@/utils/dummyData";
 import Link from "next/link";
 import Button from "@/components/other/Button";
 import axios from "axios";
+import { toast } from "react-hot-toast";
+import profilePic from "../../../public/user.png";
+import Image from "next/image";
 
-const PostComments = ({ postId }) => {
-    const [comment, setComments] = useState([]);
+const PostComments = ({ postId, id }) => {
+    const [comments, setComments] = useState(postId);
     const [user, setUser] = useState({ token: "" });
     const [desc, setDesc] = useState("");
 
-    const fetchComments = async () => {
+    const fetchUser = async () => {
         const responce = await axios.post("/api/users/checkCookies");
         if (responce.data.data) {
             setUser({ token: responce.data.data });
         }
-        const res = comments.filter((c) => c.post === postId);
-        setComments(res);
     };
 
     useEffect(() => {
-        fetchComments();
+        fetchUser();
     }, []);
 
     const handleDeleteComment = async (e) => {
@@ -39,15 +40,15 @@ const PostComments = ({ postId }) => {
 
     const handlePostComment = async (e) => {
         e.preventDefault();
-
-        // const res = await postComments(postId, user?.token, desc);
-        // if (res?.success === true) {
-        //   setDesc("");
-        //   fetchComments();
-        //   toast.success("sent successfully");
-        // } else {
-        //   toast.error("Something went wrong, Please try again");
-        // }
+        const res = await axios.post("/api/postcomment", { desc, id });
+        const after = newComment.length
+        console.log(res);
+        if (res?.success === true) {
+            setDesc("");
+            toast.success("sent successfully");
+        } else {
+            toast.error("Something went wrong, Please try again");
+        }
     };
 
     return (
@@ -96,9 +97,9 @@ const PostComments = ({ postId }) => {
                 ) : (
                     comments?.map((el) => (
                         <div key={el?._id} className="w-full flex  items-start">
-                            <img
-                                src={el?.user?.image}
-                                alt={el?.user?.name}
+                            <Image
+                                src={profilePic}
+                                alt="Profile img."
                                 className="w-8 h-8 rounded-full"
                             />
                             <div className="w-full -mt-2  pl-2">
@@ -113,7 +114,7 @@ const PostComments = ({ postId }) => {
 
                                 <div className="flex justify-start  gap-2">
                                     <p className="text-sm justify-start">
-                                        {el?.desc}
+                                        {el?.commentText}
                                     </p>
 
                                     {/* {user?.user?._id === el?.user?._id && (

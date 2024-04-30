@@ -1,28 +1,32 @@
-// import { useEffect, useState } from "react";
-import { posts, writer } from "@/utils/dummyData";
+"use client"
+import { useEffect, useState } from "react";
+// import { posts, writer } from "@/utils/dummyData";
 import Card from "@/components/other/Card";
 import Button from "@/components/other/Button";
+import axios from "axios";
 
 const WriterPage = ({ params }) => {
-    // take user from local storage
-    //   const { user } = useStore();
-    const user = "hello";
-    //   const { id } = params;
-    //   const [writer, setWriter] = useState(null);
+    const { userId } = params;
+    const [writer, setWriter] = useState(null);
+    const [user, setUser] = useState("");
 
     //   const { posts, numOfPages, setPage } = usePosts({ writerId: id });
     //   const popular = usePopularPosts();
 
     //   const { userId } = useParams();
-    //   const fetchWriterInfo = async () => {
-    //     const res = await getWriterInfo(id);
-    //     console.log(res);
-    //     setWriter(res);
-    //   };
+    const fetchWriterInfo = async () => {
+        const responce = await axios.post("/api/users/checkCookies");
+        if (responce.data.data) {
+            setUser({ token: responce.data.data });
+        }
+        const res = await axios.post(`/api/profiledata`,{userId});
+        console.log(res);
+        setWriter(res);
+    };
 
-    //   useEffect(() => {
-    //     fetchWriterInfo();
-    //   }, [id]);
+    useEffect(() => {
+        fetchWriterInfo();
+    }, []);
     //   const handleFollow = async () => {
     //     const res = await followWriter(id, user?.token);
     //     if (res?.success === true) {
