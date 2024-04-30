@@ -91,7 +91,16 @@ const CreatePage = () => {
         formData.append('data', JSON.stringify(data));
 
         const response = await axios.post(backendUrl+"/post/", formData);
-        console.log(response)
+        console.log(response.data);
+        if (response.data.message==="Successful"){
+            toast.success("Post created successfully");
+            console.log("Post created successfully");
+            editor?.commands?.clearContent(true);
+            setFile(null);
+            setTitle("");
+            setDescription("");
+            setCategory(null);
+        }
 
 
     };

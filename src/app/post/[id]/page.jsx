@@ -1,5 +1,4 @@
 "use client";
-// import Markdown from "markdown-to-jsx";
 import { useEffect, useState } from "react";
 import Markdown from "markdown-to-jsx";
 import { posts, popular } from "@/utils/dummyData.js";

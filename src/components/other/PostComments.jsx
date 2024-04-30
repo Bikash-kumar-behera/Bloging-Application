@@ -41,9 +41,9 @@ const PostComments = ({ postId, id }) => {
     const handlePostComment = async (e) => {
         e.preventDefault();
         const res = await axios.post("/api/postcomment", { desc, id });
-        const after = newComment.length
+        // const after = newComment.length
         console.log(res);
-        if (res?.success === true) {
+        if (res?.data.message === "Comment Created successful") {
             setDesc("");
             toast.success("sent successfully");
         } else {
@@ -53,11 +53,14 @@ const PostComments = ({ postId, id }) => {
 
     return (
         <div className="w-full py-8">
-            <p className="text-lg text-slate-700 dark:text-slate-500 mb-3">
-                Post Comments
-            </p>
-
             {user?.token ? (
+                <>
+                <div className="w-full flex justify-between">
+                <span className="text-lg text-slate-700 dark:text-slate-500 mb-3">
+                Post Comments
+            </span>
+            <button className="text-lg py-2 px-5 rounded-full border-2 bg-red-400 text-white dark:text-slate-500 mb-3" onClick={handleDeleteComment}>Delete</button>
+                </div>
                 <form
                     className="flex flex-col mb-6"
                     onSubmit={handlePostComment}
@@ -80,6 +83,7 @@ const PostComments = ({ postId, id }) => {
                         />
                     </div>
                 </form>
+                </>
             ) : (
                 <Link href="/sign-in" className="flex flex-col py-6">
                     <Button

@@ -7,7 +7,6 @@ export async function POST(request) {
         const { postId } = reqBody;
         const url = process.env.BACKEND_URL + `/post/${postId}`;
         const posts = await axios.get(url);
-
         return NextResponse.json({
             message: "Post featch successful",
             data: posts.data.data,

@@ -15,7 +15,7 @@ export async function POST(request) {
         const posts = await axios.post(url, comment);
 
         return NextResponse.json({
-            message: "Post featch successful",
+            message: "Comment Created successful",
             data: posts.data.data,
         });
     } catch (error) {
